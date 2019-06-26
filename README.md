@@ -33,7 +33,53 @@ Post-release defect density = number of known bugs reported in issue tracker for
 3. CLOC
 
 ### Commands Used To Run the Tools for Collecting Data
-1. Cloc - can be downloaded at this  _[link](https://commons.apache.org/proper/commons-collections/)_
+1. Jacoco
+* Generating Repot
+Add following code in pom.xml file as a plugin
+ <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.7.9</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>report</id>
+                <phase>prepare-package</phase>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>jacoco-check</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+                <configuration>
+                  <rules>
+                    <rule implementation="org.jacoco.maven.RuleConfiguration">
+                      <element>BUNDLE</element>
+                      <limits>
+                        <limit implementation="org.jacoco.report.check.Limit">
+                          <counter>INSTRUCTION</counter>
+                          <value>COVEREDRATIO</value>
+                          <minimum>0.60</minimum>
+                        </limit>
+                      </limits>
+                    </rule>
+                  </rules>
+                </configuration>
+              </execution>
+            </executions>
+   </plugin>
+
+
+2. PIT test
+3. Cloc - can be downloaded at this  _[link](https://commons.apache.org/proper/commons-collections/)_
 * To find Lines of Code
 ** Cloc projectname>filename.csv -- To collect data in csv file
 * To find relative code churn 
