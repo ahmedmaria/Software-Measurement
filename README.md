@@ -35,50 +35,15 @@ Post-release defect density = number of known bugs reported in issue tracker for
 ### Commands Used To Run the Tools for Collecting Data
 1. Jacoco
 * Generating Repot
-Add following code in pom.xml file as a plugin
- <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.9</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>prepare-agent</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>report</id>
-                <phase>prepare-package</phase>
-                <goals>
-                  <goal>report</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>jacoco-check</id>
-                <phase>test</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <rules>
-                    <rule implementation="org.jacoco.maven.RuleConfiguration">
-                      <element>BUNDLE</element>
-                      <limits>
-                        <limit implementation="org.jacoco.report.check.Limit">
-                          <counter>INSTRUCTION</counter>
-                          <value>COVEREDRATIO</value>
-                          <minimum>0.60</minimum>
-                        </limit>
-                      </limits>
-                    </rule>
-                  </rules>
-                </configuration>
-              </execution>
-            </executions>
-   </plugin>
+Add following code in pom.xml file as a plugin and run maven clean install from command line
+ ![jacoco](https://user-images.githubusercontent.com/9052955/60183395-347e0800-97f4-11e9-82e0-405d4dece9ab.PNG)
 
 
 2. PIT test
+Add following code in pom.xml file and run  from command line
+![pit test](https://user-images.githubusercontent.com/9052955/60183460-6000f280-97f4-11e9-87f7-71ce990abfa2.PNG)
+
+
 3. Cloc - can be downloaded at this  _[link](https://commons.apache.org/proper/commons-collections/)_
 * To find Lines of Code
 ** Cloc projectname>filename.csv -- To collect data in csv file
