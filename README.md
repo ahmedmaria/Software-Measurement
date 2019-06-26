@@ -40,7 +40,7 @@ Add following code in pom.xml file as a plugin and run maven clean install from 
 
 
 2. PIT test
-Add following code in pom.xml file and run  from command line
+Add following code in pom.xml file and run mvn org.pitest:pitest-maven:mutationCoverage from command line
 ![pit test](https://user-images.githubusercontent.com/9052955/60183460-6000f280-97f4-11e9-87f7-71ce990abfa2.PNG)
 
 
